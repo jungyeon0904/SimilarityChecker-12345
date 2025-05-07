@@ -4,8 +4,6 @@ using namespace std;
 
 class SimilarityChecker {
 public:
-	static const int PartialScorePercent = 60;
-
 	// 글자 수 검사
 	int lengthCheck(string a, string b) {
 		double aLength = a.length();
@@ -17,10 +15,10 @@ public:
 			return 0;
 		}
 		else if (aLength > bLength) {
-			return static_cast<int>((1 - (aLength - bLength) / bLength) * PartialScorePercent);
+			return static_cast<int>((1 - (aLength - bLength) / bLength) * 60);
 		}
 		else { // aLength < bLength
-			return static_cast<int>((1 - (bLength - aLength) / aLength) * PartialScorePercent);
+			return static_cast<int>((1 - (bLength - aLength) / aLength) * 60);
 		}
 	}
 
