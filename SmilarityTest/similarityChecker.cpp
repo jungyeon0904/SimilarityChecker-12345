@@ -1,6 +1,31 @@
-#include <string>
+ï»¿#include <string>
+#include <math.h>
+using namespace std;
 
 class SimilarityChecker {
-	// ±ÛÀÚ ¼ö °Ë»ç
-	// ¾ËÆÄºª °Ë»ç
+public:
+	// ê¸€ìž ìˆ˜ ê²€ì‚¬
+	int lengthCheck(string a, string b) {
+		double aLength = a.length();
+		double bLength = b.length();
+
+		if (aLength == bLength)
+			return 60;
+		else if (TwiceDifference(aLength, bLength)) {
+			return 0;
+		}
+		else if (aLength > bLength) {
+			return static_cast<int>((1 - (aLength - bLength) / bLength) * 60);
+		}
+		else { // aLength < bLength
+			return static_cast<int>((1 - (bLength - aLength) / aLength) * 60);
+		}
+	}
+
+	bool TwiceDifference(double aLen, double bLen)
+	{
+		return bLen >= (aLen * 2) || aLen >= (bLen * 2);
+	}
+
+	// ì•ŒíŒŒë²³ ê²€ì‚¬
 };
